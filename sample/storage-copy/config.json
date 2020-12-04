@@ -1,0 +1,32 @@
+{
+	"package-name" : "simple-storage-copy",
+	"cloud-providers": ["aws","openwhisk"],
+	"default-cloud" : "openwhisk",
+	"dependencies" : ["json","requests","boto3","multicloud"],
+	"runtime":"python3",
+	"functions": [
+	{
+		"name" : "copy",
+		"location" :"run.py",
+		"target_cloud": "openwhisk",
+		"triggering_resource":"::storage",
+		"trigger_type": "insert",
+		"resource_name": "incoming-traffic" ,
+		"iam":[
+		{
+			"resource_name":"incoming-traffic",
+			"resource_type":"::storage",
+			"permissions" : ["read"]
+			
+		},
+		{	
+			"resource_name":"outgoing-traffic",
+			"resource_type":"::storage",
+			"permissions" : ["write"]
+
+		}
+	]	
+
+	}
+	]
+}

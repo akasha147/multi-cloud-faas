@@ -15,4 +15,4 @@ s3_trigger_template = Template("""
 """)
 
 def generate_s3_trigger(function_name,location,resource,event):
-	return s3_trigger_template.substitute(func_name=function_name+"_proxy",handler=location+"."+function_name+"_proxy",bucket=resource,event=triggerMappings[event])
+	return s3_trigger_template.substitute(func_name=function_name,handler=location+"."+function_name,bucket=resource,event=triggerMappings[event])
