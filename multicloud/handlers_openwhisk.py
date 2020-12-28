@@ -55,3 +55,23 @@ class noSqlDatabaseHandler():
 			self.db.disconnect()
 
 		return response
+
+	def get_all(self,TableName):
+		# if self.cloudName == "aws":
+		# 	query_result = self.db.scan(TableName=TableName)
+		# 	response = []
+		# 	for item in query_result['Items']:
+		# 		datatuple = dict()
+		# 		for key in item.keys():
+		# 			for type in item[key].keys():
+		# 				datatuple[key]=item[key][type]
+		# 		response.append(datatuple)
+
+		if self.cloudName == "openwhisk":
+			self.db.connect()
+			response = []
+			for document in self.db[TableName]:
+				response.append(document)
+			self.db.disconnect()
+		
+		return response

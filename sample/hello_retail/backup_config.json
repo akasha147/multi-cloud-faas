@@ -1,0 +1,47 @@
+{
+  "package-name": "hello-retail",
+  "cloud-providers": [
+    "aws",
+    "openwhisk"
+  ],
+  "default-cloud": "openwhisk",
+  "dependencies": [
+    "multicloud.handlers",
+    "multicloud.triggers",
+    "uuid",
+    "json",
+    "time",
+  ],
+  "runtime": "python3.6",
+  "functions": [
+    {
+      "name": "insert_photographer",
+      "location": "run.py",
+      "target_cloud": "openwhisk",
+      "iam": [
+        {
+          "resource_name": "photographers",
+          "resource_type": "::no-sql-database",
+          "permissions": [
+            "insert"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "insert_product",
+      "location": "run.py",
+      "target_cloud": "openwhisk",
+      "iam": [
+        {
+          "resource_name": "catalog",
+          "resource_type": "::no-sql-database",
+          "permissions": [
+            "insert"
+          ]
+        }
+      ]
+    }
+
+  ]
+}

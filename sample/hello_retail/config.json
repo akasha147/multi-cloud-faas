@@ -1,0 +1,44 @@
+{
+  "package-name": "hello-retail",
+  "cloud-providers": [
+    "aws",
+    "openwhisk"
+  ],
+  "default-cloud": "openwhisk",
+  "dependencies": [
+    "multicloud.handlers",
+    "multicloud.triggers",
+    "uuid",
+    "json",
+    "random",
+    "time"  
+  ],
+  "runtime": "python3.6",
+  "functions": [
+    {
+      "name": "assign_photographer_to_product",
+      "location": "run.py",
+      "target_cloud": "openwhisk",
+      "triggering_resource":"::no-sql-database",
+      "trigger_type": "insert",
+      "resource_name": "catalog",
+      "iam": [
+        {
+          "resource_name": "assignment",
+          "resource_type": "::no-sql-database",
+          "permissions": [
+            "insert"
+          ]
+        },
+        {
+          "resource_name": "photographers",
+          "resource_type": "::no-sql-database",
+          "permissions": [
+            "scan"
+          ]
+        }
+      ]
+    }
+
+  ]
+}

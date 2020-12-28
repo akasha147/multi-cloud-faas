@@ -1,3 +1,5 @@
 {
-	"storage" : "cloud-object-storage"
+	"storage" : "cloud-object-storage",
+	"https" : "https",
+	"no-sql-database":"cloudantnosqldb"
 }

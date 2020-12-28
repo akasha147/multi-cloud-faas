@@ -1,3 +1,5 @@
 {
-	"storage":"s3"
+	"storage":"s3",
+	"https":"https",
+	"no-sql-database":"dynamodb"
 }

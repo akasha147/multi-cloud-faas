@@ -1,0 +1,10 @@
+copy_object,s3:PutObject,s3:GetObject
+create_bucket,s3:CreateBucket
+list_bucket_analytics_configurations,s3:GetAnalyticsConfiguration
+list_bucket_inventory_configurations,s3:GetInventoryConfiguration
+list_bucket_metrics_configurations,s3:GetMetricsConfiguration
+list_buckets,s3:ListAllMyBuckets
+list_multipart_uploads,s3:ListBucketMultipartUploads
+list_object_versions,s3:ListBucketVersions
+list_objects,s3:ListBucket
+scan,dynamodb:Scan
